@@ -1,4 +1,10 @@
-import React, {useState} from 'react';// {
+import React, {useState} from 'react';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Banner from '../banner';
+
+// {
 //     # general "metadata" like title, sources etc
 //     "name" : "a-unique-human-readable-and-url-usable-identifier",
 //     "title" : "A nice title",
@@ -23,7 +29,7 @@ var DataPackage = () => {
         const [id, setId]=useState("")       
 
 
-    var data = {
+    const myData = {
         "name": name,
         "title": title,
         "license": license,
@@ -31,19 +37,55 @@ var DataPackage = () => {
         "resources": [ resources ],
         "id": id,
     }
-    var handleSubmit = () => {
-        console.log(data);
+    const handleClick = (e) => {
+        const myData = {
+            "name": name,
+            "title": title,
+            "license": license,
+            "sources": [ sources ],
+            "resources": [ resources ],
+            "id": id,
+        }
+        console.log(myData)
     }
      return(
-        <>
-        Id:  <input type="text" value={id} onChange={e => setId(e.target.value)} />
-        Name:  <input type="text" value={name} onChange={e => setName(e.target.value)}/> 
+        <Container>
+        <Banner title='Datapackage Metadata Form' />
+        <Row className='container'>
+        Id:  <input 
+            type="text" 
+            value={id}
+            size='lg' 
+            onChange={e => setId(e.target.value)}
+        />
+        </Row>
+        <Row className='container'>
+        Name:  <input type="text"
+            value={name} 
+            onChange={e => setName(e.target.value)}
+        />
+        </Row>
+        <Row className='container'>
         Title: <input type="text" value={title} onChange={e => setTitle(e.target.value)}/>
+        </Row>
+        <Row className='container'>
         Licenses: <input type="text" value={license} onChange={e => setLicense(e.target.value)}/>
+        </Row>
+        <Row className='container'>
         Sources: <input type="text" value={sources} onChange={e => setSources(e.target.value)}/> 
+        </Row>
+        <Row className='container'>
         Resources: <input type="text" value={resources} onChange={e => setResources(e.target.value)}/>
-        <button name="Submit" onClick= {handleSubmit} />
-        </>
+        </Row>
+
+
+
+        <Row className='container'>
+        <Button onClick={handleClick} >
+            Submit
+        </Button></Row>
+        </Container>
+
   )
 }
 export default DataPackage;

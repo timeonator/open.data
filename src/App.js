@@ -1,4 +1,5 @@
 import DataPackage from './forms/datapackage'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
