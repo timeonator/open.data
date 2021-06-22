@@ -17,13 +17,13 @@ const Navigation = () => {
       <Nav.Link href="/home">Home</Nav.Link>
       <NavDropdown title="New" id="basic-nav-dropdown">
         <NavDropdown.Item href="/datapackage">Datapackage</NavDropdown.Item>
-
       </NavDropdown>
     </Nav>
     <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-success">Search</Button>
+      <FormControl type="text" placeholder="Search" className="mr-sm-3" />
+      <Button variant="outline-success" size='sm'>Search</Button>
     </Form>
+    
   </Navbar.Collapse>
 </Navbar>
     )
