@@ -18,6 +18,10 @@ const Navigation = () => {
       <NavDropdown title="New" id="basic-nav-dropdown">
         <NavDropdown.Item href="/datapackage">Datapackage</NavDropdown.Item>
       </NavDropdown>
+      <NavDropdown title="View" id="basic-nav-dropdown">
+        <NavDropdown.Item href="/package-catalog">Package Catalog</NavDropdown.Item>
+        <NavDropdown.Item href="/dataset-catalog">Dataset Catalog</NavDropdown.Item>        
+      </NavDropdown>
     </Nav>
     <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-3" />
