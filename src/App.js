@@ -8,26 +8,27 @@ import DataPackage from './forms/datapackage'
 //import './App.css';
 
 const App = () => {
-  return (
-    <Router>
-        <div className="App">
-            <Navigation />
-            <Switch>                
-                <Route path='/datapackage' component={DataPackage}/>
-                <Route path='/dataset-catalog' component={DatasetCatalog}/>
-                <Route path='/package-catalog' component={PackageCatalog}/>  
-                <Route exact path='/' component={Home}/>            
-            </Switch>
-        </div>
-    </Router>
+    const Home = () => {
+        return(
+            <h3>Open Data</h3>
+        )
+    }
 
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Navigation />
+                <Switch>                
+                    <Route path='/datapackage' component={DataPackage}/>
+                    <Route path='/dataset-catalog' component={DatasetCatalog}/>
+                    <Route path='/package-catalog' component={PackageCatalog}/>  
+                    <Route exact path='/' component={Home}/>            
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
-function Home() {
-    return(
-        <h3>Open Data</h3>
-    )
-}
+
 
 export default App;
