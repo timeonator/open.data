@@ -61,43 +61,43 @@ var DataPackage = () => {
         console.log(myData)
         postData('http://localhost:8000/datapackage', myData)
     }
-     return(
-        <Container>
-        <Banner title='Datapackage Metadata Form' />
-        <Row className='container'>
-        Id:  <input 
-            type="text" 
-            value={id}
-            size='lg' 
-            onChange={e => setId(e.target.value)}
-        />
-        </Row>
-        <Row className='container'>
-        Name:  <input type="text"
-            value={name} 
-            onChange={e => setName(e.target.value)}
-        />
-        </Row>
-        <Row className='container'>
-        Title: <input type="text" value={title} onChange={e => setTitle(e.target.value)}/>
-        </Row>
-        <Row className='container'>
-        Licenses: <input type="text" value={license} onChange={e => setLicense(e.target.value)}/>
-        </Row>
-        <Row className='container'>
-        Sources: <input type="text" value={sources} onChange={e => setSources(e.target.value)}/> 
-        </Row>
-        <Row className='container'>
-        Resources: <input type="text" value={resources} onChange={e => setResources(e.target.value)}/>
-        </Row>
+    return(
+        <>
+            <Container>
+            <Banner title='Datapackage Metadata Form' />
+            <Row className='container'>
+            Id:  <input 
+                type="text" 
+                value={id}
+                size='lg' 
+                onChange={e => setId(e.target.value)}
+            />
+            </Row>
+            <Row className='container'>
+            Name:  <input type="text"
+                value={name} 
+                onChange={e => setName(e.target.value)}
+            />
+            </Row>
+            <Row className='container'>
+            Title: <input type="text" value={title} onChange={e => setTitle(e.target.value)}/>
+            </Row>
+            <Row className='container'>
+            Licenses: <input type="text" value={license} onChange={e => setLicense(e.target.value)}/>
+            </Row>
+            <Row className='container'>
+            Sources: <input type="text" value={sources} onChange={e => setSources(e.target.value)}/> 
+            </Row>
+            <Row className='container'>
+            Resources: <input type="text" value={resources} onChange={e => setResources(e.target.value)}/>
+            </Row>
+            <Row className='container'>
+            <Button onClick={handleClick} >
+                Submit
+            </Button></Row>
+        </Container> 
+         </>
 
-
-
-        <Row className='container'>
-        <Button onClick={handleClick} >
-            Submit
-        </Button></Row>
-        </Container>
 
   )
 }
