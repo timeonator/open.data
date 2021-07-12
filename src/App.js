@@ -3,7 +3,7 @@ import PackageCatalog from './component/package-catalog'
 import DatasetCatalog from './component/dataset-catalog'
 import DataPackage from './forms/datapackage'
 import Navigation from './navigation'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -18,7 +18,7 @@ const App = () => {
 
     return (
             <div className="App">
-                <BrowserRouter>
+                <Router>
                 <Navigation />
                 <Switch>                
                     <Route path='/datapackage' component={DataPackage}/>
@@ -27,7 +27,7 @@ const App = () => {
                     <Route path='/home' component={Home}/>  
                     <Route path='/' exact component={Home}/>            
                 </Switch>
-                </BrowserRouter>
+                </Router>
             </div>
     );
 }
