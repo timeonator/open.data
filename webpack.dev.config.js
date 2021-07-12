@@ -12,7 +12,7 @@ module.exports = {
         })
     ],
     devServer: {
-        port: 8000,
+        port: 8080,
         onListening: function (server) {
             const port = server.listeningApp.address().port;
             console.log('Listening on port:', port);
