@@ -1,92 +1,46 @@
 import React, {useState, useEffect } from 'react';
 import { useTable } from "react-table";
+const cloneDeep = require('lodash/clonedeep');
 import '../App.css';
 
+function useFetch(uri) {
+  const [data, setData] = useState([]);
+  var [loading, setLoading] = useState(true);
+  var [error, setError] = useState(false);
 
-const PackageCatalog = () => {
-    const [data, setData]=useState([]);
-    const [loading, setLoading]=useState(true);
-    const [error, setError]=useState(false);
+  useEffect(() => {
+    if (!uri) return;
 
-    useEffect(() => {
-        fetch("http://localhost:8000/datapackages",{
-            method: 'GET',
-            accept: 'application/json',
-            mode: 'cors',
-            cache: 'default',
-        })
-        .then(response => {
-            if (response.ok) { return response.json() }
-            throw response;
-        }).then(data => {
-            setData(data);
-        }).catch(error => {
-            setError(error);
-            console.log("Error fetching Data: ", error);
-        })
-            .finally(()=> {setLoading(false)});
-      },[]);
-
-    const columns = [
-        {
-          Header: "ID",
-          accessor: "_id",
-        },
-        {
-          Header: "Name",
-          accessor: "name",
-        },
-        {
-          Header: "Title",
-          accessor: "title",
-        },
-      ];
+    fetch(uri,{
+        method: 'GET',
+        accept: 'application/json',
+        mode: 'cors',
+        cache: 'default',
+    })
+        .then((data) => data.json())
+        .then(setData)
+        .then(() => setLoading(false))
+        .catch((error) => setError);   
+  }, [uri]); 
     
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-    } = useTable({
-        columns,
-        data,
-    });
-
-    if(loading) return(<h3>Loading Data ...</h3>);
-    if(error) return("<h3> Error</h3>");
-
-    return(
-        <>
-        <h3>Package Catalog</h3>
-
-        <table {...getTableProps()}>
-        <thead>
-        {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
-            </tr>
-        ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-            <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
-                })}
-            </tr>
-            );
-        })}
-        </tbody>
-    </table>
-    </>
-    )  
+    var result = { loading, data, error };
+    return result;
+}
 
 
+const PackageCatalog = (props) => {
+    const uri = "http://localhost:8000/datapackages"
+    const { loading, data, error } = useFetch(uri);
+ 
 
+  if (loading) return <h1>loading ...</h1>;
+  if (error) return <pre>Error: {data}</pre>;
+  var deepData = cloneDeep(data);
+  console.log(deepData);
+  return (
+    <div>
+      <pre>Success: {JSON.stringify(deepData)}</pre>
+    </div>
+  )
 }
 export default PackageCatalog
