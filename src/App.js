@@ -17,6 +17,7 @@ const App = () => {
     }
 
     return (
+        <React.StrictMode >
             <div className="App">
                 <Router>
                 <Navigation />
@@ -29,6 +30,7 @@ const App = () => {
                 </Switch>
                 </Router>
             </div>
+        </React.StrictMode>
     );
 }
 
