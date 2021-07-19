@@ -9,6 +9,7 @@
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "bootstrap": "^5.0.1",
+    "jsx-runtime": "^1.2.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
@@ -30,14 +31,15 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "> 1%",
+      "ie 10"
     ],
-    "development": [
+    "modern": [
       "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 firefox version"
+    ],
+    "ssr": [
+      "node 12"
     ]
   },
   "devDependencies": {
