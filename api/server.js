@@ -5,19 +5,19 @@ const { MongoClient } = require("mongodb");
 
 const HOST='localhost'
 const PORT=8000
-const uri = 'mongodb://localhost:27017';
+const uri = 'mongodb://'+HOST+'localhost:27017';
 
-DATA=  [
-    {
-        "id" : "1", 
-        "name" : "datapackage-test-1",
-        "title" : "Datapackage Test One",
-        "licenses" : [],
-        "sources" : [],
-        "resources": [],
-    }
-]
-const wrapDB = async (operation) => {
+// const DATA =  [
+//     {
+//         "id" : "1", 
+//         "name" : "datapackage-test-1",
+//         "title" : "Datapackage Test One",
+//         "licenses" : [],
+//         "sources" : [],
+//         "resources": [],
+//     }
+// ]
+const wrapDB = async (res, operation) => {
     try {
         const client = await MongoClient.connect(uri, {
             useNewUrlParser: true,
@@ -43,16 +43,16 @@ app.get('/', (req,resp) => {
     resp.send('open dataset: Hello')
 })
 
-app.get('/datapackages',cors(corsOptions),(req,res) => {
-    wrapDB(async (db) => {
-        const query = {_id: {$exist: true}}
-        const cursor = await db
+app.get('/datapackages',cors(corsOptions),(req,result) => {
+    wrapDB(async (res,db) => {
+        await db
             .collection('datapackages')
-            .find()
-            .toArray();
-        console.log(cursor);
-        if(cursor == null) {res.status(200).send(null)}  
-        else {res.status(200).send(cursor);}
+            .find({})
+            .toJson((err,result) => {
+                if(err) throw err;
+                if(result == null) {res.status(200).send([])}  
+                else {res.status(200).send(result);}              console.log(result);
+            });
     })
 })
 
@@ -73,7 +73,7 @@ app.post('/datapackage',(req,res) => {
     wrapDB(async (db) => {
 
         console.log(req.body)
-        const dp = await db
+        await db
             .collection('datapackages')
             .insertOne(req.body);
         res.status(200).json(req.body)
