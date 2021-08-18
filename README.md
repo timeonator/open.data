@@ -4,4 +4,4 @@ This app helps manage ingestion and distribution of data collections along with 
 
 ## References
 
-Frictionless Data Specification DataPackage spec https://specs.frictionlessdata.io/data-package/#language
+Frictionless Data Specification DataPackage spec https://specs.frictionlessdata.io//
