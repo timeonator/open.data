@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useTable } from 'react-table';
+import '../styles/global.css';
 
 const DataPackage = (props) => {
   const columns = useMemo(
@@ -24,7 +25,7 @@ const DataPackage = (props) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
   return (
-    <div>
+    <div className="container data-package">
       <table {...getTableProps()}>
         <thead>
           {
