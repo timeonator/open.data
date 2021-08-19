@@ -61,7 +61,7 @@ var DataPackage = () => {
   };
   return (
     <>
-      <Container classname="container data-package">
+      <Container className="container data-package">
         <Banner title="Datapackage Metadata Form" />
         <Row className="container">
           Id:{' '}
