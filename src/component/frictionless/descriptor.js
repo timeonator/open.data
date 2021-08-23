@@ -14,7 +14,7 @@
 //     ... additional information ...
 //   }
 
-constant Discriptor = (props) => {
-    return (<h3>Discriptor</h3>)
-}
+const Discriptor = (props) => {
+  return <h3>Discriptor</h3>;
+};
 export default Discriptor;
