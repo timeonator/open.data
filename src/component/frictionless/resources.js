@@ -1,10 +1,10 @@
 import React from 'react';
-import MaterialTable from 'material-table';
+import Table from '../table';
 
 const columns = [
-  { field: 'name', title: 'Name' },
-  { field: 'path', title: 'Path' },
-  { field: 'title', title: 'Title' },
+  { accessor: 'name', Header: 'Name' },
+  { accessor: 'path', Header: 'Path' },
+  { accessor: 'title', Header: 'Title' },
 ];
 
 const data = [
@@ -18,7 +18,8 @@ const data = [
 const Resources = (props) => {
   return (
     <>
-      <MaterialTable columns={columns} data={data} />
+      <h4>Resources</h4>
+      <Table columns={columns} data={data} />
     </>
   );
 };
