@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: process.env.NODE_ENV || 'development',
   entry: '/src/index.js',
   devtool: 'inline-source-map',
   plugins: [
@@ -11,6 +11,9 @@ module.exports = {
       inject: 'head',
     }),
   ],
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   devServer: {
     port: 8080,
     onListening: function (server) {
@@ -29,7 +32,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules[/\\](?!react-data-grid[/\\]lib)/,
         use: {
           loader: 'babel-loader',
@@ -39,8 +42,17 @@ module.exports = {
         },
       },
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
+      },
+      {
         test: /\.css$/,
         use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+        use: ['file-loader'],
       },
     ],
   },
