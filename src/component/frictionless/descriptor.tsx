@@ -24,7 +24,7 @@ interface descriptor {
   //   licenses: licenses;
   //   contributors: contributors;
 }
-const Discriptor = (props) => {
+const Discriptor = () => {
   return <h3>Discriptor</h3>;
 };
 export default Discriptor;

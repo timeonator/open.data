@@ -5,7 +5,7 @@ interface Heading {
   accessor: string;
   Header: string;
 }
-interface Data {
+export interface Resource {
   name: string;
   path: string;
   title: string;
@@ -17,7 +17,7 @@ const columns: Array<Heading> = [
   { accessor: 'title', Header: 'Title' },
 ];
 
-const data: Array<Data> = [
+const data: Array<Resource> = [
   {
     name: 'solar-system',
     path: 'http://example.com/solar-system.csv',
