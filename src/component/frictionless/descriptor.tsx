@@ -1,3 +1,4 @@
+//import Resource from './resources';
 // {
 //     # general "metadata" like title, sources etc
 //     "name" : "a-unique-human-readable-and-url-usable-identifier",
@@ -14,6 +15,15 @@
 //     ... additional information ...
 //   }
 
+//
+// Frictionless Dataset Descriptor
+interface descriptor {
+  name: String;
+  title: String;
+  //  resources: Array<typeof Resource>;
+  //   licenses: licenses;
+  //   contributors: contributors;
+}
 const Discriptor = (props) => {
   return <h3>Discriptor</h3>;
 };
