@@ -35,7 +35,7 @@ const Licenses = () => {
   return (
     <>
       <h4>Licenses</h4>
-      <Table cc={columns} data={data} />
+      <Table columns={columns} data={data} />
     </>
   );
 };
