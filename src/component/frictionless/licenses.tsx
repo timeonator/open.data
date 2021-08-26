@@ -4,11 +4,13 @@
 //     "title": "Open Data Commons Public Domain Dedication and License v1.0"
 //   }]
 import React from 'react';
-import Table from '../Table';
+import Table from '../table';
+
 interface Heading {
   accessor: string;
   Header: string;
 }
+
 export interface License {
   name: string;
   path: string;
@@ -32,8 +34,8 @@ const data: Array<License> = [
 const Licenses = () => {
   return (
     <>
-      <h4>Resources</h4>
-      <Table columns={columns} data={data} />
+      <h4>Licenses</h4>
+      <Table cc={columns} data={data} />
     </>
   );
 };
